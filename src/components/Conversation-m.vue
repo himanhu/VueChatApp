@@ -1,5 +1,5 @@
 <template>
-    <div class="conversation-area" :class="{ 'message-sent': true }">
+    <div class="conversation-area"  id="mydiv" :class="{ 'message-sent': true }">
       <div class="message-list" ref="messageList">
         <MessageList
           v-for="message in conversation"
@@ -38,6 +38,8 @@
   
   <style scoped>
   .conversation-area{
+    height: 800px;
+    overflow: auto;
 
   }
   .message-sent{
