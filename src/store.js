@@ -17,12 +17,14 @@ export default new Vuex.Store({
       state.currentUser = data;
     },
     addMessage(state, message) {
+        console.log(typeof state.conversation , state.conversation,'sdsdsd',message)
       state.conversation.push(message);
     },
   },
   actions: {
 
     fetchConversation({ commit }) {
+        console.log('inside apppp')
       setTimeout(() => {
         commit('setConversation', conversation);
       }, 500);
