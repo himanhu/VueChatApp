@@ -7,8 +7,9 @@
           :message="message"
           :currentuser="currentuser"
         ></MessageList>
+        <div class="b-typing" v-if="showTyping">typing...</div>
       </div>
-      <TextArea @send="sendReply"></TextArea>
+      <TextArea @isTyping="showtyping" @send="sendReply"></TextArea>
     </div>
   </template>
   
@@ -21,16 +22,21 @@
       MessageList,
       TextArea,
     },
+    data(){
+      return{
+        showTyping:false,
+
+      }
+    },
     props: ['conversation', 'currentuser'],
     methods: {
       sendReply(message) {
         this.$store.dispatch('sendReply', message);
-        this.scrollToBottom();
       },
-      scrollToBottom() {
-        this.$nextTick(() => {
-          this.$refs.messageList.scrollTop = this.$refs.messageList.scrollHeight;
-        });
+      showtyping(mess){
+        if(mess.length > 0) return this.showTyping = true;
+        return this.showTyping = false
+
       },
     },
   };
@@ -45,10 +51,18 @@
   .message-sent{
 
   }
+  .b-typing{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 40px;
+
+  }
   .message-list{
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 100px;
   }
   /* Styles for conversation area component */
   </style>
