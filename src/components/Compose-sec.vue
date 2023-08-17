@@ -3,6 +3,7 @@
       <textarea
         v-model="reply"
         @keydown.enter.prevent="sendMessage"
+        @keyup="typing"
         rows="1"
         ref="textarea"
         class="b-text-area"
@@ -32,6 +33,9 @@
         }
         
       },
+      typing(){
+        this.$emit('isTyping', this.reply);
+      },
       validateMessage(mess){
         return mess.trim() !== '';
       }
@@ -44,7 +48,7 @@
   .b-text-area{
     width: 80%;
     height: 20px;
-    margin-left: 10%;
+    margin-left: 2%;
     margin-right:10px;
 
   }
@@ -52,7 +56,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right:10%;
+    margin-right: 10%;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
 
   }
   .btn-class{
