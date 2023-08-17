@@ -1,7 +1,6 @@
-// src/store.js
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { conversation, currentUser } from './data'; // Assuming you have the data file in the same directory
+import { conversation, currentUser } from './data'; 
 
 Vue.use(Vuex);
 
@@ -18,14 +17,12 @@ export default new Vuex.Store({
       state.currentUser = data;
     },
     addMessage(state, message) {
-        console.log(typeof state.conversation , state.conversation,'sdsdsd',message)
       state.conversation.push(message);
     },
   },
   actions: {
 
     fetchConversation({ commit }) {
-        console.log('inside apppp')
       setTimeout(() => {
         commit('setConversation', conversation);
       }, 500);
@@ -37,18 +34,6 @@ export default new Vuex.Store({
     },
     
     sendReply({ commit }, message) {
-
-        // return Vue.ServiceFile.SendChat(payload).then(
-        //     res => {
-        //       commit("remove_order", payload.id);
-        //       return Promise.resolve(true);
-        //     },
-        //     err => {
-        //       return Promise.reject(err);
-        //     }
-        //   );
-        
-      setTimeout(() => {
         const reply = {
           message: message,
           from: {
@@ -60,9 +45,18 @@ export default new Vuex.Store({
           date: new Date().toISOString(),
         };
         commit('addMessage', reply);
-      }, 500);
+
+       // return Vue.ServiceFile.SendChat(payload).then(
+        //     res => {
+        //       commit("remove_order", payload.id);
+        //       return Promise.resolve(true);
+        //     },
+        //     err => {
+        //       return Promise.reject(err);
+        //     }
+        //   );
+
+
     },
   },
 });
-
-// export default store;
