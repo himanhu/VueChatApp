@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="heading">CHaTaPP</div>
+    <div class="heading">Talk the Talk</div>
     <Conversation :conversation="conversation" currentuser="b2ob"></Conversation>
   </div>
 </template>
@@ -47,7 +47,6 @@ export default {
     display: flex;
     color: blue;
     font-weight: bold;
-    background: grey;
     height: 50px;
     align-items: center;
     justify-content: center;
