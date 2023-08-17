@@ -17,7 +17,6 @@
         showName:false
       }
     },
-
     computed:{
         getUserDetails(){
             return this.message.from.fistName
@@ -45,10 +44,12 @@
     align-items: end;
   }
   .message-bubble{
-    background-color:grey;
+    background-color:#FFC0CB;
     border-radius: 10px;
     width: 400px; 
     margin:0px 10px;
+    text-align: left;
+    padding: 10px;
   }
   .message-sent-by-me{
     display: flex;
